@@ -21,7 +21,7 @@ body {
     line-height: 1.6;
 }
 
-a {
+a { 
     text-decoration: none;
     transition: all 0.3s ease;
 }
