@@ -1,86 +1,648 @@
+```css
+/* =========================================
+   MAGELLAND DATA — MAIN WEBSITE DESIGN
+   File: style.css
+========================================= */
 
-/* STRONG VISUAL OVERRIDES */
+:root {
+    --primary: #11665b;
+    --primary-dark: #0b463f;
+    --primary-light: #e8f5f1;
+    --background: #ffffff;
+    --surface: #f7faf9;
+    --text: #182b29;
+    --muted: #687b77;
+    --border: #e2ebe8;
+    --shadow: 0 8px 30px rgba(16, 58, 50, 0.07);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background-color: #102e2b !important;
-    color: #e8f3f0 !important;
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-.container {
-    max-width: 1200px !important;
-    padding: 24px !important;
+img {
+    display: block;
+    max-width: 100%;
 }
 
-.navbar {
-    background: #123a35 !important;
-    border: 1px solid #31534d !important;
-    border-radius: 45px !important;
-    padding: 22px 30px !important;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-.hero {
-    display: block !important;
-    background: #17635c !important;
-    border: none !important;
-    border-radius: 28px !important;
-    padding: 36px !important;
-    margin-bottom: 55px !important;
+h1, h2, h3, h4 {
+    line-height: 1.3;
 }
+
+section {
+    width: 100%;
+}
+
+/* =========================================
+   HEADER AND NAVIGATION
+========================================= */
+
+header {
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    min-height: 76px;
+    margin: 20px auto;
+    padding: 16px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -0.7px;
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+nav center {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+nav a {
+    font-size: 14px;
+    font-weight: 600;
+    color: #435650;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 17px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* =========================================
+   HERO PANEL
+========================================= */
 
 .hero-image {
-    margin-top: 25px !important;
-    background: rgba(0, 0, 0, 0.10) !important;
-    border-radius: 22px !important;
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    margin: 28px auto 45px;
+    padding: 38px;
+    background: linear-gradient(
+        135deg,
+        #176c60,
+        #104c44
+    );
+    color: #ffffff;
+    border-radius: 26px;
+    box-shadow: 0 12px 30px rgba(17, 102, 91, 0.14);
+}
+
+.hero-image > i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 18px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.14);
+    font-size: 25px;
+}
+
+.hero-image h3 {
+    margin-bottom: 10px;
+    font-size: clamp(23px, 4vw, 32px);
+    font-weight: 750;
+}
+
+.hero-image p {
+    max-width: 650px;
+    color: #d8eee8;
+    font-size: 15px;
+}
+
+/* =========================================
+   NETWORK CARDS
+========================================= */
+
+.networks {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 25px 20px 65px;
+    text-align: center;
+}
+
+.networks h2,
+.features h2,
+.testimonials h2 {
+    margin-bottom: 12px;
+    color: var(--text);
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 750;
+    letter-spacing: -0.7px;
+}
+
+.networks h2::after,
+.features h2::after,
+.testimonials h2::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 4px;
+    margin: 13px auto 0;
+    background: var(--primary);
+    border-radius: 5px;
+}
+
+.network-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.network-card {
+    position: relative;
+    min-width: 0;
+    min-height: 270px;
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.network-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 35px rgba(16, 58, 50, 0.12);
+}
+
+.network-card h3 {
+    margin-bottom: 8px;
+    font-size: 21px;
+    font-weight: 750;
+}
+
+.network-card p {
+    margin-bottom: 25px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* Network-specific heading colors */
+
+.network-card.mtn h3 {
+    color: #b39700;
+}
+
+.network-card.telecel h3 {
+    color: #d82032;
+}
+
+.network-card.airteltigo h3 {
+    color: #2758b8;
+}
+
+/* Network selection buttons */
+
+.network-card::before {
+    content: "";
+    display: block;
+    width: 68px;
+    height: 68px;
+    margin-bottom: 20px;
+    border: 8px solid #eef2f0;
+    border-radius: 50%;
+    background: var(--primary-light);
+}
+
+.network-card.mtn::before {
+    background: #ffdf27;
+    border-color: #fff5bf;
+}
+
+.network-card.telecel::before {
+    background: #e52a3d;
+    border-color: #ffe4e7;
+}
+
+.network-card.airteltigo::before {
+    background: #2e5fd0;
+    border-color: #e4ebff;
+}
+
+.network-card .select-network {
+    width: 100%;
+    min-height: 48px;
+    margin-top: auto;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid #c8e1d9;
+    border-radius: 30px;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.network-card .select-network:hover {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+}
+
+/* =========================================
+   FEATURES SECTION
+========================================= */
+
+.features {
+    padding: 65px 20px;
+    background: var(--surface);
+    text-align: center;
+}
+
+.feature-grid {
+    width: 100%;
+    max-width: 1160px;
+    margin: 35px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.feature {
+    padding: 26px 20px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    text-align: left;
+    transition: transform 0.2s ease;
+}
+
+.feature:hover {
+    transform: translateY(-4px);
+}
+
+.feature h3 {
+    margin-bottom: 12px;
+    color: var(--primary-dark);
+    font-size: 17px;
+}
+
+.feature p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* =========================================
+   PRICING SECTION
+========================================= */
+
+.section-title {
+    margin: 50px 20px 8px;
+    text-align: center;
+    font-size: clamp(25px, 3vw, 32px);
+}
+
+.section-sub {
+    margin: 0 20px 30px;
+    color: var(--muted);
+    text-align: center;
 }
 
 .pricing-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 25px !important;
+    width: calc(100% - 40px);
+    max-width: 1160px;
+    margin: 0 auto 60px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
 }
 
 .card {
-    width: 100% !important;
-    min-height: 300px !important;
-    padding: 35px !important;
-    background: linear-gradient(
-        135deg,
-        #304c48,
-        #183a35
-    ) !important;
-    border: 1px solid #45625c !important;
-    border-radius: 26px !important;
-    box-shadow: none !important;
+    min-width: 0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
 }
 
-.card:hover {
-    transform: translateY(-3px) !important;
+.card.popular {
+    border: 2px solid var(--primary);
+}
+
+.plan-name,
+.plan {
+    margin-bottom: 20px;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.plan-name i,
+.plan i {
+    margin-right: 8px;
+    color: var(--primary);
+}
+
+.price {
+    margin-bottom: 16px;
+    font-size: clamp(25px, 4vw, 36px);
+    font-weight: 800;
+    overflow-wrap: anywhere;
+}
+
+.price small {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--muted);
+}
+
+.data-amount {
+    width: fit-content;
+    max-width: 100%;
+    margin-bottom: 24px;
+    padding: 7px 14px;
+    border-radius: 30px;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.features ul,
+ul.features {
+    padding: 0;
+    list-style: none;
+}
+
+ul.features {
+    margin-bottom: 25px;
+}
+
+ul.features li {
+    padding: 12px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-bottom: 1px solid #edf1ef;
+    font-size: 14px;
+}
+
+ul.features li i {
+    margin-top: 4px;
+    color: var(--primary);
 }
 
 .btn-primary {
-    border: 1px solid #55746c !important;
-    border-radius: 35px !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    color: #e8f3f0 !important;
-    padding: 15px !important;
+    width: 100%;
+    min-height: 48px;
+    margin-top: auto;
+    padding: 13px 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    background: var(--primary);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    transition: background 0.2s ease;
 }
 
-.contact-section {
-    border-radius: 25px !important;
-    background: #19443e !important;
-    border: 1px solid #45625c !important;
+.btn-primary:hover {
+    background: var(--primary-dark);
 }
+
+/* =========================================
+   TESTIMONIAL
+========================================= */
+
+.testimonials {
+    padding: 65px 20px;
+    background: var(--surface);
+    text-align: center;
+}
+
+.testimonial {
+    max-width: 650px;
+    margin: 30px auto 0;
+    padding: 32px;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+}
+
+.testimonial p {
+    color: #4e625c;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.testimonial h4 {
+    margin-top: 18px;
+    color: var(--primary);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    position: relative;
+    padding: 30px 20px;
+    background: #ffffff;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+footer p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* =========================================
+   WHATSAPP BUTTON
+========================================= */
+
+.whatsapp {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 1000;
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    background: #20c76a;
+    color: #ffffff;
+    font-size: 27px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.16);
+    transition: transform 0.2s ease;
+}
+
+.whatsapp:hover {
+    transform: scale(1.08);
+}
+
+/* =========================================
+   TABLETS
+========================================= */
+
+@media (max-width: 900px) {
+    .network-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pricing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =========================================
+   MOBILE PHONES
+========================================= */
 
 @media (max-width: 600px) {
-    .container {
-        padding: 12px !important;
+    header {
+        width: calc(100% - 24px);
+        margin: 12px auto;
+        padding: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        border-radius: 18px;
     }
 
-    .hero {
-        padding: 25px !important;
+    .logo {
+        font-size: 21px;
     }
 
-    .card {
-        min-height: 300px !important;
-        padding: 25px !important;
+    nav,
+    nav center {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 16px;
     }
-}
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .btn-outline {
+        padding: 8px 11px;
+        font-size: 12px;
+    }
+
+    .hero-image {
+        width: calc(100% - 24px);
+        margin: 18px auto 30px;
+        padding: 25px 20px;
+        border-radius: 21px;
+    }
+
+    .hero-image h3 {
+        font-size: 24px;
+    }
+
+    .hero-image p {
+        font-size: 14px;
+    }
+
+    .networks {
+        padding: 15px 12px 40px;
+    }
+
+    .networks h2,
+    .features h2,
+    .testimonials h2 {
+        font-size: 25px;
+    }
+
+    .network-container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+        margin-top: 25px;
+    }
+
+    .network-card {
+        min-height: 255px;
+        padding: 27px 20px 20px;
+        border-radius: 21px;
+    }
+
+    .feature-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+    }
+
+    .feature {
+        padding: 22px;
+    }
+
+    .features,
+    .testimonials {
+        padding: 45
